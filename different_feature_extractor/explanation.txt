@@ -1,0 +1,7 @@
+Here are presented the two different ways of extracting features from the image:
+1)facial_landmarks_68.py is a script written to show how the algorithm detect the face and the 68 points on it. After doing so, I calculated the distances between every point and all the others, to discriminate the different faces.
+This is not the script used in the project but just a simple explanation of how I worked.
+
+2)face_recognition.py is a script written to show how I improved the accuracy of the feature extraction. Here I don't use the 'shape_predictor_68_face_landmarks.dat' but I use the python library 'face_recognition' that is also based on dlib, in fact as we can see, the points are covered by the lines if we use this script on 'old_method.jpg'.
+
+There's also a photo of a guy who couldn't be analyzed in our work. He is the subject 33 of the folder 3_D. None of the methods could extract features on his face.
