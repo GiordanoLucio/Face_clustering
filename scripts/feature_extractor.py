@@ -3,8 +3,12 @@
 Created on Sat Dec 15 13:09:20 2018
 
 @author: Lucio
-This script tries to extract 10 features from every video of every folder
-on subject 33 of folder 7_3D the algorithm can't find any face.
+This script tries to extract 10 features from every video of every folder.
+This is the second method I used to extract features. It uses face_recognition library.
+I don't work on frames already saved as in the first approach but I work on videos directly.
+For every video, in every folder, extract the features and save them on a '.csv' file.
+Few subject non cooperative are missing because I couldn't find their faces.
+On subject 33 of folder 7_3D the algorithm can't find any face.
 """
 
 import csv

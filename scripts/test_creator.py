@@ -3,8 +3,9 @@
 Created on Sat Dec 15 13:09:20 2018
 
 @author: Lucio
-this script create a matrix that will be used for testing using frames from 10 to 15
-subject number 30 can't be analyzed. his face can't be detected
+This script creates a matrix, that will be saved as '.csv' file for every folder.
+That matrix contains good frames from 10 to 15, so frames are completely different from the ones used for training. 
+subject number 33 of folder 7_3D can't be analyzed. his face can't be detected
 """
 
 import csv
