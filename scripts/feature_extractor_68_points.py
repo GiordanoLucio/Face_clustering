@@ -4,12 +4,20 @@ Created on Wed Dec 19 15:07:22 2018
 
 @author: Lucio
 
-#This is the first script I used for feature extraction. 
+#This is the first script I wrote for feature extraction. 
 It was executed after extracting the frames from the video, in fact, it works taking
 the frames in input.
 I can't upload the dataset for privacy problem but as you can see using my face
 it extracts the distances and normalize them dividing every distance calculated by 
 the length of the diagonal of the boundary box.
+The script returns the matrix with the distances. One entry row per face/frame
+This script extracted the faces from all the frames of the video. 
+Later this became a problem, in fact, the clusters were not balanced, and to solve this problem I changed 
+the algorithm to only extract 10 good faces per video in training and 5, different from the ones used for 
+the training, for testing.
+The way in which I avoid getting more than 10 entries per video, can be seen in the other script. I prefered 
+to put this older version to make you understand how was the first script and how it has evolved.
+
 """
 
 from imutils import face_utils
@@ -24,8 +32,10 @@ import os
 import re
 
 detector = dlib.get_frontal_face_detector()
+#shape predictor used to detect the 68 points
 predictor = dlib.shape_predictor('../different_feature_extractor/shape_predictor_68_face_landmarks.dat')
 root = '../dataset/frames/7_3D'
+#this is the path were the file.csv is saved
 csv_output= open("../csv_files/68_points_results/feature_extracted_68_points.csv", 'wt', newline="") #creazione csv #@@@@@@@@ CAMBIARE QUI @@@@@@@@@@@@@@
 csv_writer=csv.writer(csv_output)		   	   #dove scrive il csv
 for folder_name in os.listdir(root):
@@ -81,20 +91,18 @@ for folder_name in os.listdir(root):
                 continue
               #calculates the Eucledian distance i-j
               distanza=round(math.sqrt(math.pow((int(arrxi[j])-int(arrxi[i])), 2)+math.pow((int(arryi[j])-int(arryi[i])),2)),4)
-              #divides the distance calculated before by the diagonal
-              distanza=distanza/ math.sqrt(math.pow(h,2) + math.pow(w,2)) #sto dividendo per la diagonale del boundary box
+              #Normalizing: divides the distance calculated before by the diagonal of the boundary box
+              distanza=distanza/ math.sqrt(math.pow(h,2) + math.pow(w,2)) 
               distanza = "{:.7f}".format(distanza)
               date.append(str(distanza))
               j+=1
               count+=1
             i+=1
-          date.append(numero_persona)   #@@@@@@@@ CAMBIARE QUI @@@@@@@@@@@@@@
+          date.append(numero_persona)
           csv_writer.writerow(date)
           #print( 'w:',w, ', h: ', h, ' ,', date)
           #print('file analizzato con successo ' + filename + count) #usata per controllare quanti elementi scriveva nel csv => 68*68.
         except: 
           print('file non utilizzabile ', filename)
-        #  os.remove(filename)
-csv_output.close() #ORA INIZIO LE MODIFICHE!!
-
-##ok funziona perfettamente.
+        #  os.remove(filename) #if you want to remove the file after it's features have been saved on the csv
+csv_output.close()
