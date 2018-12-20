@@ -49,7 +49,7 @@ for (i, rect) in enumerate(rects):
     # convert dlib's rectangle to a OpenCV-style bounding box
     # [i.e., (x, y, w, h)], then draw the face bounding box
     (x, y, w, h) = face_utils.rect_to_bb(rect)
-    #cv2.rectangle(image, (x, y), (x + w, y + h), (0, 255, 0), 2)
+    cv2.rectangle(image, (x, y), (x + w, y + h), (0, 255, 0), 2)
     
     
     
@@ -67,7 +67,7 @@ for (i, rect) in enumerate(rects):
     # loop over the (x, y)-coordinates for the facial landmarks
     # and draw them on the image
     for (x, y) in shape:
-        cv2.circle(image, (x, y), 1, (0, 0, 255), -1)
+        cv2.circle(image, (x, y), 2, (0, 0, 255), -1)
     arrxi=[] #array per i punti i
     arryi=[] #array per i punti j
     for indice in shape:
@@ -82,7 +82,6 @@ for (i, rect) in enumerate(rects):
 myfile.close()
 
 percorso = args["image"]+(".txt") #il nome del volto su cui ho eseguito lo script
-##risultato= open(percorso, 'w')
 count=0
 i=0
 distanza=0
