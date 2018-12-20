@@ -92,19 +92,25 @@ pat = pathfile[:-4]
 csv_output= open(pat+".csv", 'wt', newline="") #creazione csv
 csv_writer=csv.writer(csv_output)		   	   #dove scrive il csv
 
-while i < len(arrxi):#ok, fa da 0 a 67, quindi 68 volte
+while i < len(arrxi):
 	j=0
 	date=[]
 	while j < len(arrxi):
-		#if i==j:#j+=1#continue #utilizzato per non far computare quando j=i ovvero non calcola la distanza fra un punto e se stesso(che sarebbe 0)
+		#used to avoid computing when j=i. doesn't calculate the distances between a point
+		#and himself and the others that have already been calculated
+		#if i==j:#j+=1#continue 
+		
 		distanza=round(math.sqrt(math.pow((int(arrxi[j])-int(arrxi[i])), 2)+math.pow((int(arryi[j])-int(arryi[i])),2)),2)
 		date.append(str(distanza))
-##		risultato.write(str(distanza) + " ")
+		
+		##risultato.write(str(distanza) + " ")
 		j+=1
 		count+=1
-##	risultato.write("\n")
+		##risultato.write("\n")
 	#print(date)
-	csv_writer.writerow(date)	#scrive la row nel csv
+	
+	#scrive la row nel csv
+	csv_writer.writerow(date)
 	i+=1
 
 csv_output.close()
