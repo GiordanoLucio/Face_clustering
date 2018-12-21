@@ -1,0 +1,33 @@
+Number of Sub-Clusters: 6
+Validation: 84.65277777777777%
+Test over itselft: 91.62037037037038%
+Test case: 1_indoor_lights_cooperative_testing.csv
+ Precision: 96.7741935483871%
+  Correct Matchings: 300
+  Wrong Matchings: 10
+Test case: 2_Indoor_lights_non_cooperative_testing.csv
+ Precision: 88.70967741935483%
+  Correct Matchings: 275
+  Wrong Matchings: 35
+Test case: 3_Indoor_flash_cooperative_testing.csv
+ Precision: 89.6774193548387%
+  Correct Matchings: 278
+  Wrong Matchings: 32
+Test case: 4_Indoor_flash_non_cooperative_testing.csv
+ Precision: 69.18032786885246%
+  Correct Matchings: 211
+  Wrong Matchings: 94
+Test case: 5_Outdoor_cooperative_testing.csv
+ Precision: 92.58064516129032%
+  Correct Matchings: 287
+  Wrong Matchings: 23
+Test case: 6_Outdoor_non_cooperative_testing.csv
+ Precision: 87.74193548387098%
+  Correct Matchings: 272
+  Wrong Matchings: 38
+Test case: 7_3D_testing.csv
+ Precision: 91.44736842105263%
+  Correct Matchings: 278
+  Wrong Matchings: 26
+Execution Time 4:29.13
+
